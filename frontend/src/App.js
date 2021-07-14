@@ -1,33 +1,30 @@
 import { useState } from "react";
-import './App.css';
+import { useFilms } from "./hooks";
 
 function App() {
-  const [search, setSearch] = useState("");
-  const [films, setFilms] = useState([]);
+  const [query, setQuery] = useState("");
+  const [films, findFilms] = useFilms();
 
   const handleChange = (event) => {
-    setSearch(event.target.value);
-  }
+    setQuery(event.target.value);
+  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    fetch(`https://swapi.dev/api/films/?search=${search}`)
-      .then(response => response.json())
-      .then(data => setFilms(data.results));
-  }
+    findFilms(query);
+  };
 
   return (
     <div className="App">
       <form data-test="finder" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Find a film" data-test="finder-input" onChange={handleChange} />
+        <input type="text" placeholder="Search films" data-test="finder-input" onChange={handleChange} />
         <button>Go</button>
       </form>
 
       {films.length > 0 &&
         <ul data-test="films">
-          {films.map(film => (
-            <li>{film.title}</li>
+          {films.map((film, index) => (
+            <li key={index}>{film.title}</li>
           ))
           }
         </ul>
