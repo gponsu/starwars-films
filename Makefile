@@ -16,4 +16,4 @@ start: ## Starts the development server
 
 test: ## Starts the end to end test runner
 	$(info Running test)
-	@docker-compose run --rm e2e
+	@docker-compose up  --no-log-prefix --abort-on-container-exit --exit-code-from e2e
