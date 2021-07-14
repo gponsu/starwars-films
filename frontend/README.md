@@ -8,11 +8,13 @@ In order to start a development server, we must install [docker](https://docs.do
 and [docker compose](https://docs.docker.com/compose/install/).
 
 1\. Run the next command for installing dependencies:
+
 ```bash
 $ make install
 ```
 
 2\. Start the development server:
+
 ```bash
 $ make start
 ```

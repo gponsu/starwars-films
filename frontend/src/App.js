@@ -17,18 +17,22 @@ function App() {
   return (
     <div className="App">
       <form data-test="finder" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Search films" data-test="finder-input" onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="Search films"
+          data-test="finder-input"
+          onChange={handleChange}
+        />
         <button>Go</button>
       </form>
 
-      {films.length > 0 &&
+      {films.length > 0 && (
         <ul data-test="films">
           {films.map((film, index) => (
             <li key={index}>{film.title}</li>
-          ))
-          }
+          ))}
         </ul>
-      }
+      )}
     </div>
   );
 }
