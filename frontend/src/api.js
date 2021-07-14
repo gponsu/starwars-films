@@ -1,4 +1,4 @@
-const STAR_WARS_API_URL = "https://swapi.dev/api";
+import { STAR_WARS_API_URL } from "./constants";
 
 const request = async (endpoint, options = {}) => {
   const { search } = options;
